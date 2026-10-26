@@ -111,85 +111,48 @@ img{max-width:100%;display:block}
 .footer{background:var(--navy);color:#c5cde0;padding:32px 0;font-size:.92rem}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 
-/* WhatsApp / customer care */
-.careBtn {background: var(--wa, #25D366);
-  color: #05210f;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 999px;
-  padding: 14px 22px;
-  display: inline-block;
-  text-align: center;
-  transition: background 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.2s ease;
-}
+/* WhatsApp Floating Container */
+.float-wa-container{position:fixed;right:20px;bottom:20px;z-index:1000;display:flex;align-items:center;justify-content:flex-end;gap:12px}
 
-.careBtn.float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 40;
+/* WhatsApp Label */
+.float-wa-label{display:flex;align-items:center;gap:9px;padding:12px 18px;background:#fff;color:#172b20;border:1px solid rgba(37,211,102,.25);border-radius:12px;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:0 5px 20px rgba(0,0,0,.15);opacity:0;visibility:hidden;transform:translateX(12px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;pointer-events:none}
 
-  /* circular shape */
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  padding: 0;
+/* Label Arrow */
+.float-wa-label::after{content:"";position:absolute;right:-6px;width:11px;height:11px;background:#fff;border-top:1px solid rgba(37,211,102,.25);border-right:1px solid rgba(37,211,102,.25);transform:rotate(45deg)}
 
-  /* center the icon */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Label Icon */
+.float-wa-label .icon{width:18px;height:18px;fill:#25D366;flex-shrink:0}
 
-  /* WhatsApp green + icon color */
-  background: #25D366;
-  color: #fff;
+/* Floating WhatsApp Button */
+.commBtn.float{position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;width:60px;height:60px;padding:0;background:#25D366;color:#fff;border:2px solid rgba(255,255,255,.9);border-radius:50%;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.18),0 4px 12px rgba(37,211,102,.3);transition:background .25s ease,transform .25s ease,box-shadow .25s ease;animation:wa-pulse 2.5s ease-in-out infinite}
 
-  /* depth */
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(37, 211, 102, 0.35);
+/* WhatsApp Icon */
+.commBtn.float::before{content:"";display:block;width:32px;height:32px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20.52 3.48A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.43-8.43ZM12.06 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.45 4.44-9.89 9.89-9.89a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.88 9.89Z'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center;transition:transform .25s ease}
 
-  /* hide the text label visually */
-  font-size: 0;
-}
+/* Show Label on Hover or Focus */
+.float-wa-container:hover .float-wa-label,.float-wa-container:focus-within .float-wa-label{opacity:1;visibility:visible;transform:translateX(0)}
 
-.careBtn.float::before {
-  content: "";
-  display: block;
-  width: 32px;
-  height: 32px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/></svg>");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform 0.2s;
-}
+/* Button Hover */
+.commBtn.float:hover{background:#128C7E;transform:translateY(-3px) scale(1.04);box-shadow:0 12px 30px rgba(0,0,0,.2),0 6px 18px rgba(18,140,126,.35)}
 
-.careBtn.float:hover {
-  background: #128C7E;
-  transform: scale(1.08);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32), 0 6px 16px rgba(18, 140, 126, 0.4);
-}
+/* Icon Hover */
+.commBtn.float:hover::before{transform:scale(1.08)}
 
-.careBtn.float:hover::before {
-  transform: rotate(6deg);
-}
+/* Button Active */
+.commBtn.float:active{transform:scale(.95)}
 
-.careBtn.float:active {
-  transform: scale(0.96);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
+/* Keyboard Focus */
+.commBtn.float:focus-visible{outline:3px solid #128C7E;outline-offset:4px}
 
-.careBtn.float:focus-visible {
-  outline: 3px solid #b0e0d0;
-  outline-offset: 3px;
-}
+/* Pulse Animation */
+@keyframes wa-pulse{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.18),0 4px 12px rgba(37,211,102,.3)}50%{box-shadow:0 8px 24px rgba(0,0,0,.18),0 4px 18px rgba(37,211,102,.55)}}
 
-.careBtn.block {
-  display: block;
-  margin-top: 12px;
-}
-.careBtn.inline {
-  padding: 10px 16px;
-}
+/* Reduced Motion */
+@media(prefers-reduced-motion:reduce){.commBtn.float,.float-wa-label,.commBtn.float::before{animation:none;transition:none}}
+
+/* Existing Button Variants */
+.commBtn.block{display:block;margin-top:12px}
+.commBtn.inline{padding:10px 16px}
 
 /* Modal */
 .modal-back{position:fixed;inset:0;background:#0d162ccc;backdrop-filter:blur(5px);z-index:60;display:grid;place-items:center;padding:16px;overflow:auto;animation:fade .2s}
@@ -229,9 +192,9 @@ img{max-width:100%;display:block}
   .kicker{font-size:.8rem;padding:6px 14px}
   .card .btn-ink{min-height:50px;padding:0 20px}
   .explore .btn{width:100%;padding:0 24px;min-height:56px;font-size:1rem}
-  .careBtn.float{width:54px;height:54px;right:14px;bottom:14px}
-  .careBtn.float::before{width:28px;height:28px}
-  .modal .btn,.modal .careBtn{min-height:50px}
+  .commBtn.float{width:54px;height:54px;right:14px;bottom:14px}
+  .commBtn.float::before{width:28px;height:28px}
+  .modal .btn,.modal .commBtn{min-height:50px}
   .grid{grid-template-columns:1fr}
   .section{padding:64px 0}
   .rot{justify-content:center}
