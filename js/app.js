@@ -104,7 +104,7 @@
 
   render();
 
-  /* ---------- Registration steps (modal, plus page list if present) ---------- */
+  /* ---------- Registration steps ---------- */
   const stepsHTML = STEPS.map((s) => `<li><b>${esc(s[0])}</b><span>${esc(s[1])}</span></li>`).join("");
   ["regSteps", "mSteps"].forEach((id) => { const el = $(id); if (el) el.innerHTML = stepsHTML; });
 

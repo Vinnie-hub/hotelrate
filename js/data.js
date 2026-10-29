@@ -29,6 +29,6 @@ const STEPS = [
   ["Enter your details", "Username (no spaces, e.g. Mary23), phone number (e.g. 712345678), valid email, and a password you will remember."],
   ["Choose your country", "Select it from the list."],
   ["Create your account", "Tick Terms & Conditions, then press Create Account."],
-  ["Pay the activation fee", "Pay the one-time KSh 500. It is refundable within 7 days if you don't manage to complete the work as expected."],
+  ["Pay the activation fee", "Pay the one-time KSh 500. It is refundable within 7 days if you can't manage to work as expected."],
   ["Start reviewing", "Open a hotel, write your review, and earn KSh 200 to 800 for each approved review."]
 ];
