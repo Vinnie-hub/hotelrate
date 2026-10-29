@@ -2,24 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>hotelrate | Review hotels, get paid per review</title>
-<meta name="description" content="Review hotels on hotelrate. HotelRate is a hotel ratings and reviews platform. Browse hotels, read honest reviews, and share your own. Eligible users can earn a commission per review.">
-<meta name="theme-color" content="#ff7a00">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HotelRate | Review hotels and get paid per approved review</title>
+<meta name="description" content="HotelRate introduces you to Mulaearn, a hotel ratings and reviews platform. Browse hotels, read honest reviews, and share your own. Eligible users can earn a commission per review.">
+<meta name="theme-color" content="#14213d">
 <link rel="icon" type="image/webp" href="assets/favicon-192.webp">
-<link rel="apple-touch-icon" href="assets/favicon-192.webp">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
 <header class="header">
   <div class="wrap bar">
-    <a class="logo" href="#top">
+    <a class="logo" href="#top" aria-label="HotelRate home">
       <img class="logo-img" src="assets/hotel%20review%20logo.webp" alt="HotelRate" width="150" height="50">
     </a>
     <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="#how-it-works">How it works</a>
+      <a class="nav-link" href="#hotels">Hotels</a>
       <button class="btn btn-gold js-register" type="button">Register</button>
     </nav>
   </div>
@@ -27,28 +30,39 @@
 
 <main id="top">
   <section class="hero">
-    <div class="hero-bg" role="img" aria-label="Hotel pool at dusk"></div>
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="kicker">Hotel reviews for Kenya</p>
         <h1>Stay curious. <em>Review the world&rsquo;s finest hotels.</em></h1>
-        <p class="lede">Explore rooms, interiors and dining, then rate and share your review. Earn for every successfully completed hotel review.</p>
+        <p class="lede">Explore rooms, interiors and dining, then write your review. HotelRate introduces you to Mulaearn, which pays for each approved review.</p>
         <div class="actions">
           <button class="btn btn-gold js-register" type="button">Register</button>
           <a class="btn btn-ghost" href="#hotels">Browse hotels</a>
         </div>
+        <ul class="terms" aria-label="Key terms">
+          <li><b>KSh 500</b><span>one-time activation fee</span></li>
+          <li><b>7 days</b><span>to request a refund</span></li>
+          <li><b>KSh 200&ndash;800</b><span>per approved review</span></li>
+        </ul>
       </div>
       <figure class="hero-art">
-        <img class="hero-img" src="assets/hotelrate-hero.webp" alt="HotelRate: real hotel reviews, better stays, better pay" width="1541" height="1020" fetchpriority="high">
+        <img class="hero-img" src="assets/hotelrate-hero.webp" alt="A smiling woman writing a hotel review on her laptop beside a pool, with the HotelRate and Mulaearn logos" width="1672" height="941" fetchpriority="high">
       </figure>
     </div>
   </section>
 
   <section class="section" id="hotels">
     <div class="wrap">
-      <div class="head"><h2>Hotels waiting for your review</h2><p>Select any hotel to review</p></div>
+      <div class="head"><h2>Hotels Ready for Your Review</h2><p>Explore available hotels and start reviewing to earn.</p></div>
       <div class="grid" id="grid" aria-live="off"></div>
-      <div class="rot"><div class="dots" id="dots" aria-label="Choose a selection"></div></div>
+      <noscript><p class="noscript">Turn on JavaScript to see the sample hotels, or register directly on <a href="https://mulaearn.com/register.php?ref=sydney">Mulaearn</a>.</p></noscript>
+      <div class="rot">
+        <button class="pause" id="pause" type="button" aria-pressed="false" aria-label="Pause automatic hotel rotation">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/><path class="i-play" d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="dots" id="dots" role="group" aria-label="Choose a selection"></div>
+      </div>
       <div class="explore"><button class="btn btn-gold js-register" type="button">Register to explore all hotels</button></div>
     </div>
   </section>
@@ -57,14 +71,14 @@
     <div class="wrap">
       <div class="head">
         <h2>How HotelRate works</h2>
-        <p>Three steps from sign-up to your first review</p>
+        <p>Three steps from sign-up to your first payout</p>
       </div>
       <ol class="steps">
         <li class="step">
           <span class="step-no" aria-hidden="true">1</span>
           <h3>Create your account</h3>
           <p>Sign up on Mulaearn with your username, phone number and email, then pay the activation fee.</p>
-          <p class="step-note">KSh 500, refundable</p>
+          <p class="step-note">KSh 500, refundable within 7 days</p>
         </li>
         <li class="step">
           <span class="step-no" aria-hidden="true">2</span>
@@ -76,7 +90,7 @@
           <span class="step-no" aria-hidden="true">3</span>
           <h3>Review and earn</h3>
           <p>Write your reviews honestly. Each approved review earns KSh 200 to 800, withdrawn to M&#8209;Pesa.</p>
-          <p class="step-note">Paid per review</p>
+          <p class="step-note">Paid per approved review</p>
         </li>
       </ol>
     </div>
@@ -84,37 +98,39 @@
 </main>
 
 <footer class="footer"><div class="wrap foot">
-  <span>&copy; <span id="year"></span> hotelrate. All rights reserved.</span>
+  <span>&copy; <span id="year"></span> HotelRate. All rights reserved.</span>
 </div></footer>
 
-<div class="float-wa-container">
-  <span class="float-wa-label" id="wa-label">
-    <svg class="icon" aria-hidden="true">
-      <use href="#icon-chat"></use>
-    </svg>
-    Join WhatsApp Community
-  </span>
-
-  <a
-    class="commBtn float"
-    href="https://chat.whatsapp.com/Ir5lbHCr9rPCLuvVzvHAyD"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Join our WhatsApp community"
-    aria-describedby="wa-label"
-  ></a>
+<div class="fab-stack">
+  <div class="install-tip" id="installTip" role="status" hidden>
+    <b>Install HotelRate</b>
+    <span>Tap the Share button in Safari, then choose &ldquo;Add to Home Screen&rdquo;.</span>
+  </div>
+  <button class="install-btn" id="installBtn" type="button" hidden>
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
+    Install app
+  </button>
+  <div class="float-wa-container">
+    <span class="float-wa-label" id="wa-label">Join WhatsApp Community</span>
+    <a class="commBtn float" href="https://chat.whatsapp.com/Ir5lbHCr9rPCLuvVzvHAyD" target="_blank" rel="noopener noreferrer" aria-label="Join our WhatsApp community" aria-describedby="wa-label"></a>
+  </div>
 </div>
 
 <div class="modal-back" id="modal" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-    <button class="close" id="close" aria-label="Close">&times;</button>
-    <h2 id="mTitle">Registration Process</h2>
+    <button class="close" id="close" type="button" aria-label="Close">&times;</button>
+    <h2 id="mTitle">Registration process</h2>
     <p class="mlead" id="mHotel"></p>
     <ol class="regsteps compact" id="mSteps"></ol>
-    <a class="btn btn-gold block" href="https://mulaearn.com/register.php?ref=sydney" target="_blank" rel="noopener">Continue to register</a>
+    <a class="btn btn-gold block" href="https://mulaearn.com/register.php?ref=sydney" target="_blank" rel="noopener">Continue to Register</a>
   </div>
 </div>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
+</script>
 </body>
 </html>

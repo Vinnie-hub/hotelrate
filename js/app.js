@@ -17,7 +17,8 @@
     return a;
   };
 
-  const list = shuffle(HOTELS.slice());
+  /* whole pages only, so no hotel repeats within one cycle */
+  const list = shuffle(HOTELS.slice()).slice(0, Math.floor(HOTELS.length / PER) * PER || HOTELS.length);
   const pages = Math.ceil(list.length / PER);
   let page = 0;
   let timer = null;
@@ -27,7 +28,7 @@
 
   dots.innerHTML = Array.from(
     { length: pages },
-    (_, i) => `<button type="button" aria-label="Selection ${i + 1}" aria-current="false"></button>`
+    (_, i) => `<button type="button" aria-label="Show hotels ${i * PER + 1} to ${Math.min((i + 1) * PER, list.length)}" aria-current="false"></button>`
   ).join("");
 
   /* Always show a full row set: wrap around so the last page is never short */
@@ -44,7 +45,6 @@
       <div class="body">
         <div class="top">
           <h3>${esc(h.name)}</h3>
-          <span class="rate" aria-label="Rated ${h.rating} out of 5">${h.rating.toFixed(1)}</span>
         </div>
         <p class="desc">${esc(h.desc)}</p>
         <button class="btn btn-ink" type="button" data-hotel="${esc(h.name)}">Review this hotel</button>
@@ -66,24 +66,43 @@
     }, 350);
   }
 
+  /* Auto-rotation runs only while the grid is on screen, the tab is visible,
+     and the visitor hasn't paused it or is interacting with it. */
+  const pauseBtn = $("pause");
+  let userPaused = reduceMotion; /* reduced motion: start paused, never auto-advance */
+  let inView = false;
+  let holding = false;
+
+  const syncPause = () => {
+    pauseBtn.setAttribute("aria-pressed", String(userPaused));
+    pauseBtn.setAttribute("aria-label", userPaused ? "Resume automatic hotel rotation" : "Pause automatic hotel rotation");
+  };
   function stop() { clearInterval(timer); timer = null; }
   function start() {
     stop();
-    if (!reduceMotion) timer = setInterval(() => go(page + 1), EVERY);
+    if (userPaused || !inView || holding || document.hidden) return;
+    timer = setInterval(() => go(page + 1), EVERY);
   }
+  pauseBtn.addEventListener("click", () => { userPaused = !userPaused; syncPause(); start(); });
+  syncPause();
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([en]) => { inView = en.isIntersecting; start(); }, { threshold: 0.2 }).observe(grid);
+  } else { inView = true; }
 
   dots.addEventListener("click", (e) => {
     const i = [...dots.children].indexOf(e.target.closest("button"));
     if (i > -1) { go(i); start(); }
   });
-  grid.addEventListener("mouseenter", stop);
-  grid.addEventListener("mouseleave", start);
-  grid.addEventListener("focusin", stop);
-  grid.addEventListener("focusout", start);
-  document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+  const hold = (v) => () => { holding = v; start(); };
+  grid.addEventListener("mouseenter", hold(true));
+  grid.addEventListener("mouseleave", hold(false));
+  grid.addEventListener("focusin", hold(true));
+  grid.addEventListener("focusout", hold(false));
+  grid.addEventListener("touchstart", hold(true), { passive: true });
+  grid.addEventListener("touchend", () => setTimeout(hold(false), 4000), { passive: true });
+  document.addEventListener("visibilitychange", start);
 
   render();
-  start();
 
   /* ---------- Registration steps (modal, plus page list if present) ---------- */
   const stepsHTML = STEPS.map((s) => `<li><b>${esc(s[0])}</b><span>${esc(s[1])}</span></li>`).join("");
@@ -116,7 +135,44 @@
   $("close").addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
+    if (modal.hidden) return;
+    if (e.key === "Escape") return closeModal();
+    if (e.key === "Tab") {
+      const f = [...modal.querySelectorAll("a[href],button")];
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ---------- Install app button ---------- */
+  const installBtn = $("installBtn");
+  const installTip = $("installTip");
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  let deferred = null;
+
+  if (!standalone) {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferred = e;
+      installBtn.hidden = false;
+    });
+    if (isIOS) installBtn.hidden = false; /* Safari has no install prompt: show a tip instead */
+  }
+  installBtn.addEventListener("click", async () => {
+    if (deferred) {
+      deferred.prompt();
+      await deferred.userChoice.catch(() => {});
+      deferred = null;
+      installBtn.hidden = true;
+    } else if (isIOS) {
+      installTip.hidden = !installTip.hidden;
+    }
+  });
+  window.addEventListener("appinstalled", () => { installBtn.hidden = true; installTip.hidden = true; });
+  document.addEventListener("click", (e) => {
+    if (!installTip.hidden && !e.target.closest("#installBtn, #installTip")) installTip.hidden = true;
   });
 
   /* ---------- Header shadow on scroll + footer year ---------- */
