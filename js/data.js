@@ -369,7 +369,7 @@ const STEPS = [
   ],
   [
     "Pay the activation fee",
-    "Pay a one-time $4 activation fee, refundable within 7 days upon request, subject to the refund policy.",
+    "Pay a one-time $4 activation fee. You can request a refund within 7 days, subject to the refund policy.",
   ],
   [
     "Start reviewing",
