@@ -6,7 +6,7 @@
 
   /* ---------- Rotating hotel grid: 6 at a time ---------- */
   const PER = 6;
-  const EVERY = 6000;
+  const EVERY = 4000;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const shuffle = (a) => {
@@ -40,17 +40,17 @@
       <div class="media">
         <img src="${h.img}" alt="${esc(h.name)}, ${esc(h.city)}" loading="lazy" width="800" height="533" onerror="this.remove()">
         <span class="pill">${h.flag} ${esc(h.city)}</span>
-        <span class="chip-pay">Pay per review<b>KSh ${h.pay}</b></span>
+        <span class="chip-pay">Pay per review<b>$${h.pay}</b></span>
       </div>
       <div class="body">
         <div class="top">
           <h3>${esc(h.name)}</h3>
         </div>
         <p class="desc">${esc(h.desc)}</p>
-        <button class="btn btn-ink" type="button" data-hotel="${esc(h.name)}">Review this hotel</button>
+        <a class="btn btn-ink" href="https://mulaearn.com/register.php?ref=sydney" target="_blank" rel="noopener">Register to Review</a>
       </div>
     </article>`;
-
+ 
   function render() {
     grid.innerHTML = itemsFor(page).map(card).join("");
     [...dots.children].forEach((d, i) => d.setAttribute("aria-current", String(i === page)));
@@ -68,23 +68,18 @@
 
   /* Auto-rotation runs only while the grid is on screen, the tab is visible,
      and the visitor hasn't paused it or is interacting with it. */
-  const pauseBtn = $("pause");
-  let userPaused = reduceMotion; /* reduced motion: start paused, never auto-advance */
+  let userPaused = reduceMotion; /* reduced motion: never auto-advance */
   let inView = false;
   let holding = false;
 
-  const syncPause = () => {
-    pauseBtn.setAttribute("aria-pressed", String(userPaused));
-    pauseBtn.setAttribute("aria-label", userPaused ? "Resume automatic hotel rotation" : "Pause automatic hotel rotation");
-  };
   function stop() { clearInterval(timer); timer = null; }
   function start() {
     stop();
     if (userPaused || !inView || holding || document.hidden) return;
     timer = setInterval(() => go(page + 1), EVERY);
   }
-  pauseBtn.addEventListener("click", () => { userPaused = !userPaused; syncPause(); start(); });
-  syncPause();
+  $("prev").addEventListener("click", () => { go(page - 1); start(); });
+  $("next").addEventListener("click", () => { go(page + 1); start(); });
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(([en]) => { inView = en.isIntersecting; start(); }, { threshold: 0.2 }).observe(grid);
   } else { inView = true; }
@@ -128,8 +123,6 @@
   };
 
   document.addEventListener("click", (e) => {
-    const h = e.target.closest("[data-hotel]");
-    if (h) return openModal(h.dataset.hotel);
     if (e.target.closest(".js-register")) openModal();
   });
   $("close").addEventListener("click", closeModal);

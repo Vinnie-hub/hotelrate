@@ -92,13 +92,11 @@ img{max-width:100%;display:block}
 .desc{color:var(--mute);font-size:.94rem;margin:10px 0 20px;flex:1}
 
 /* Rotation controls */
-.rot{display:flex;justify-content:center;align-items:center;margin-top:30px;flex-wrap:wrap;gap:12px}
+.rot{display:flex;justify-content:center;align-items:center;margin-top:30px;gap:18px}
 .dots{display:flex;gap:6px;align-items:center}
-.pause{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;transition:background .15s,color .15s}
-.pause:hover{background:var(--navy);color:#fff}
-.pause .i-play{display:none}
-.pause[aria-pressed="true"] .i-play{display:block}
-.pause[aria-pressed="true"] .i-pause{display:none}
+.pager{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;flex:none;transition:background .15s,color .15s,transform .15s}
+.pager:hover{background:var(--orange);color:#fff;border-color:var(--orange);transform:translateY(-1px)}
+.pager:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
 .dots button{position:relative;width:10px;height:10px;border-radius:999px;border:0;background:#e6d2b8;cursor:pointer;padding:0;transition:width .25s,background .25s}
 .dots button::before{content:"";position:absolute;inset:-17px -5px}
 .dots button:hover{background:var(--sun)}
@@ -141,11 +139,62 @@ img{max-width:100%;display:block}
 @media(prefers-reduced-motion:reduce){.commBtn.float,.float-wa-label{transition:none;animation:none}}
 
 /* Install app */
-.install-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:var(--blue);color:#fff;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 6px 18px -6px rgba(11,31,87,.6);transition:background .15s,transform .15s}
+.install-wrap{
+  position:fixed;
+  right:96px;              /* 16px (wa offset) + 60px (wa size) + 20px gap */
+  bottom:16px;             /* same level as WhatsApp */
+  z-index:50;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  pointer-events:none;
+}
+.install-wrap > *{pointer-events:auto}
+
+/* keep the existing button styling but let it float */
+.install-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:60px;         /* match WhatsApp height so it sits on the same line */
+  padding:0 22px;
+  border:0;
+  border-radius:999px;
+  background:var(--blue);
+  color:#fff;
+  font:inherit;
+  font-weight:700;
+  font-size:.95rem;
+  cursor:pointer;
+  box-shadow:0 6px 18px -6px rgba(11,31,87,.6);
+  transition:background .15s,transform .15s;
+}
 .install-btn:hover{background:var(--blue-d);transform:translateY(-2px)}
 .install-btn[hidden],.install-tip[hidden]{display:none}
-.install-tip{max-width:240px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:.88rem;line-height:1.45;color:var(--mute);box-shadow:0 10px 26px -10px rgba(11,31,87,.45);animation:rise .25s ease-out}
+
+/* tip now opens above/left of the button */
+.install-tip{
+  position:absolute;
+  right:0;
+  bottom:calc(100% + 10px);
+  max-width:260px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px 14px;
+  font-size:.88rem;
+  line-height:1.45;
+  color:var(--mute);
+  box-shadow:0 10px 26px -10px rgba(11,31,87,.45);
+  animation:rise .25s ease-out;
+}
 .install-tip b{display:block;color:var(--blue-d);margin-bottom:2px}
+
+/* Mobile: stack tighter / hide label so it doesn't crowd WhatsApp */
+@media(max-width:640px){
+  .install-wrap{right:78px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .install-btn{min-height:54px;padding:0 16px;font-size:.85rem}
+}
 
 /* Modal */
 .modal-back{position:fixed;inset:0;background:#0d162ccc;backdrop-filter:blur(5px);z-index:60;display:grid;place-items:center;padding:16px;overflow:auto;animation:fade .2s}
@@ -193,3 +242,23 @@ img{max-width:100%;display:block}
   .foot{justify-content:center;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* Floating stack: Install app + WhatsApp on the same line, bottom-right */
+.fab-stack{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:10px}
+.fab-stack .float-wa-container{position:static;right:auto;bottom:auto}
+.fab-stack .install-btn{min-height:60px;white-space:nowrap}
+.fab-stack .install-tip{position:absolute;right:0;bottom:calc(100% + 10px)}
+@media(max-width:640px){
+  .fab-stack{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .fab-stack .install-btn{min-height:54px}
+}
+
+/* Install app: bottom-left, level with the WhatsApp button */
+.fab-stack{left:auto}
+.fab-stack .install-btn{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50}
+.fab-stack .install-tip{position:fixed;left:16px;right:auto;bottom:calc(16px + 60px + 10px + env(safe-area-inset-bottom,0px))}
+@media(max-width:640px){
+  .fab-stack .install-btn{left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .fab-stack .install-tip{left:14px;bottom:calc(14px + 54px + 10px + env(safe-area-inset-bottom,0px))}
+  .rot{gap:12px}
+}
