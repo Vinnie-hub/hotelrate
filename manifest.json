@@ -1,7 +1,7 @@
 {
   "name": "HotelRate \u2013 Hotel Reviews",
   "short_name": "HotelRate",
-  "description": "Introduces you to Mulaearn, a platform that pays for approved hotel reviews.",
+  "description": "Introduces you to LipaHub, a platform that pays for approved hotel reviews.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -47,7 +47,7 @@
           <h3>${esc(h.name)}</h3>
         </div>
         <p class="desc">${esc(h.desc)}</p>
-        <a class="btn btn-ink" href="https://mulaearn.com/register.php?ref=sydney" target="_blank" rel="noopener">Register to Review</a>
+        <a class="btn btn-ink" href="https://lipahub.com/register.php?ref=sydney" target="_blank" rel="noopener">Register to Review</a>
       </div>
     </article>`;
  
