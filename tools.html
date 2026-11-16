@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Referral Link Generator | HotelRate Team Tools</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14213d">
+<link rel="icon" type="image/webp" href="/assets/favicon-192.webp">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/tools.css">
+</head>
+<body>
+<header class="header">
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="HotelRate home">
+      <img class="logo-img" src="/assets/hotel%20review%20logo.webp" alt="HotelRate" width="150" height="50">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a class="back-link" href="/">&larr; Website</a>
+    </nav>
+  </div>
+</header>
+
+<main class="tools-main">
+  <div class="wrap">
+    <section class="tools-card" aria-labelledby="toolTitle">
+      <p class="tools-eyebrow">Team tools</p>
+      <h1 id="toolTitle">Referral Link Generator</h1>
+      <p class="lead">Enter your LipaHub referral username to get your personal HotelRate marketing link. Anyone who registers through it is credited to you.</p>
+
+      <label class="field-label" for="refInput">Your referral username</label>
+      <input class="field" id="refInput" type="text" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40" placeholder="e.g. sydney" aria-describedby="refHint">
+      <p class="field-hint" id="refHint" role="status" aria-live="polite"></p>
+
+      <div class="result">
+        <p class="result-label">Your marketing link</p>
+        <div class="link-box is-empty" id="linkBox" aria-live="polite">Enter your username above to generate your link</div>
+        <div class="actions">
+          <button class="btn btn-gold" id="copyBtn" type="button" disabled>Copy Link</button>
+          <a class="btn btn-wa is-disabled" id="waBtn" aria-disabled="true">Share on WhatsApp</a>
+        </div>
+        <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+      </div>
+
+      <p class="tools-note">
+        When someone opens your link, the website remembers your username and sends every
+        registration button to <code>lipahub.com/register.php?ref=your-username</code>.
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer class="footer"><div class="wrap foot">
+  <span>&copy; <span id="year"></span> HotelRate. Powered by LipaHub. All rights reserved.</span>
+</div></footer>
+<script src="/js/tools.js"></script>
+</body>
+</html>

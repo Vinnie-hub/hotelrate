@@ -1,0 +1,30 @@
+/* HotelRate team tools – extends styles.css (same palette, fonts, buttons) */
+.tools-main{padding:112px 0 64px;min-height:calc(100vh - 100px)}
+.tools-card{width:min(640px,100%);margin:0 auto;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:26px;padding:34px 32px 30px;box-shadow:var(--sh-lg)}
+.tools-eyebrow{font-size:.78rem;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--orange-d);margin:0 0 10px}
+.tools-card h1{font-size:clamp(1.6rem,5vw,2.2rem);color:var(--navy);margin-bottom:10px}
+.tools-card .lead{color:var(--mute);margin:0 0 24px}
+.field-label{display:block;font-weight:700;color:var(--navy);margin-bottom:8px;font-size:.95rem}
+.field{width:100%;padding:15px 18px;border-radius:16px;border:2px solid var(--line);background:#fff;color:var(--text);font:inherit;font-size:1rem;transition:border-color .2s,box-shadow .2s}
+.field::placeholder{color:#9aa3b5}
+.field:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,122,0,.18)}
+.field-hint{min-height:1.5em;margin:8px 0 0;font-size:.85rem;color:var(--mute)}
+.field-hint.warn{color:var(--orange-d);font-weight:600}
+.result{margin-top:20px}
+.result-label{font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin:0 0 8px}
+.link-box{padding:16px 18px;border-radius:16px;border:2px dashed var(--orange);background:var(--tint);color:var(--navy);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95rem;word-break:break-all;overflow-wrap:anywhere;min-height:58px}
+.link-box.is-empty{color:var(--mute);border-color:var(--line);background:#fff;font-family:inherit}
+.actions{display:flex;gap:12px;margin-top:16px}
+.actions .btn{flex:1 1 0;min-height:52px}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 12px 26px -12px var(--wa)}
+.btn[disabled],.btn.is-disabled{opacity:.45;pointer-events:none;box-shadow:none;transform:none}
+.copy-status{min-height:1.5em;margin:12px 0 0;font-weight:700;font-size:.92rem;color:#15803d}
+.tools-note{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:.88rem;color:var(--mute)}
+.tools-note code{color:var(--orange-d);word-break:break-all}
+.back-link{padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--text)}
+.back-link:hover{background:var(--tint);color:var(--orange-d)}
+@media(max-width:640px){
+  .tools-main{padding:92px 0 40px}
+  .tools-card{padding:26px 20px 24px;border-radius:22px}
+  .actions{flex-direction:column}
+}
