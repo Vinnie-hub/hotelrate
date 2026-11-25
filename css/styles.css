@@ -127,11 +127,12 @@ img{max-width:100%;display:block}
 .install-slot{position:relative;display:flex}
 .install-slot:has(.install-btn[hidden]){display:none}
 
-.fab{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;padding:0;margin:0;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer;color:inherit;-webkit-tap-highlight-color:transparent;animation:fabIn .45s cubic-bezier(.2,.9,.3,1) both}
-.fab-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;color:#fff;border:2px solid #fff;box-shadow:0 8px 18px -6px rgba(15,42,92,.55),0 2px 4px rgba(15,42,92,.15);transition:transform .2s,box-shadow .2s,filter .2s}
+.fab{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding:0;margin:0;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer;color:inherit;-webkit-tap-highlight-color:transparent;animation:fabIn .45s cubic-bezier(.2,.9,.3,1) both}
+.fab-icon svg{width:28px;height:28px}
+.fab-icon{display:grid;place-items:center;flex:none;width:56px;height:56px;border-radius:50%;color:#fff;border:2px solid #fff;box-shadow:0 8px 18px -6px rgba(15,42,92,.55),0 2px 4px rgba(15,42,92,.15);transition:transform .2s,box-shadow .2s,filter .2s}
 .fab-wa .fab-icon{background:linear-gradient(135deg,#2fe07a,#17b955)}
 .fab-install .fab-icon{background:linear-gradient(135deg,#2b5fd0,var(--navy-2))}
-.fab-label{padding:5px 11px;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:999px;font-size:.74rem;font-weight:700;line-height:1.2;white-space:nowrap;box-shadow:0 4px 12px -6px rgba(15,42,92,.45);transition:transform .2s,box-shadow .2s,max-width .35s ease,opacity .25s ease,padding .35s ease,border-width .35s ease;max-width:220px;overflow:hidden}
+.fab-label{padding:7px 14px;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:999px;font-size:.85rem;font-weight:700;line-height:1.2;white-space:nowrap;box-shadow:0 4px 12px -6px rgba(15,42,92,.45);transition:transform .2s,box-shadow .2s,max-width .35s ease,opacity .25s ease,padding .35s ease,border-width .35s ease;max-width:220px;overflow:hidden}
 .fab:hover .fab-icon{transform:translateY(-2px) scale(1.05);filter:brightness(1.06)}
 .fab:hover .fab-label{box-shadow:0 6px 14px -6px rgba(15,42,92,.55)}
 /* After a few seconds the captions fold away so only the circles remain; hover/focus brings them back */
@@ -151,8 +152,8 @@ img{max-width:100%;display:block}
   .terms li{flex-direction:row;align-items:baseline;gap:10px;padding:0;border-left:0}
   .faq details p{padding-right:0}
   .fab-stack{left:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));gap:8px}
-  .fab-icon{width:42px;height:42px}
-  .fab-label{font-size:.7rem;padding:4px 9px}
+  .fab-icon{width:50px;height:50px}
+  .fab-label{font-size:.78rem;padding:6px 12px}
   .rot{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){.fab,.fab-icon,.fab-label{transition:none;animation:none}}

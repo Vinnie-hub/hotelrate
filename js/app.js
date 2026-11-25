@@ -38,7 +38,7 @@
   const card = (h, i) => `
     <article class="card" style="--i:${i}">
       <div class="media">
-        <img src="${h.img}" alt="${esc(h.name)}, ${esc(h.city)}" loading="lazy" width="800" height="533" onerror="this.remove()">
+        <img src="${h.img}" alt="${esc(h.name)}, ${esc(h.city)}" loading="lazy" decoding="async" width="800" height="533" onerror="this.remove()">
         <span class="pill">${h.flag} ${esc(h.city)}</span>
         <span class="chip-pay">Pay per review<b>$${h.pay}</b></span>
       </div>
