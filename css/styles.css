@@ -1,12 +1,12 @@
 /* ===== HotelRate styles ===== */
 :root{
-  --orange:#ff7a00;--orange-d:#e56a00;--sun:#ffb830;
-  --navy:#14213d;--navy-2:#1d2f55;
-  --bg:#fffaf3;--tint:#fff1e0;--card:#fff;
-  --text:#1c2438;--mute:#5d677d;--line:#f0e2cf;--wa:#25d366;--blue:var(--navy-2);--blue-d:var(--navy);
+  --orange:#ff7a00;--orange-d:#d96200;--sun:#ffb830;
+  --navy:#0f2a5c;--navy-2:#1e4fb0;
+  --bg:#f1f6ff;--tint:#e4eeff;--card:#fff;
+  --text:#14223f;--mute:#566580;--line:#d8e3f6;--wa:#25d366;--blue:var(--navy-2);--blue-d:var(--navy);
   --r:22px;
-  --sh:0 1px 2px rgba(20,33,61,.05),0 14px 30px -18px rgba(20,33,61,.28);
-  --sh-lg:0 2px 4px rgba(20,33,61,.06),0 30px 50px -24px rgba(255,122,0,.45);
+  --sh:0 1px 2px rgba(15,42,92,.06),0 14px 30px -18px rgba(15,42,92,.32);
+  --sh-lg:0 2px 4px rgba(15,42,92,.07),0 30px 50px -24px rgba(30,79,176,.5);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
@@ -33,7 +33,7 @@ img{max-width:100%;display:block}
 
 /* Header */
 .header{position:fixed;top:0;left:0;right:0;z-index:30;padding-top:env(safe-area-inset-top,0px);background:#fff;border-bottom:1px solid var(--line);transition:box-shadow .25s}
-.header.solid{box-shadow:0 8px 28px -14px rgba(20,33,61,.35)}
+.header.solid{box-shadow:0 8px 28px -14px rgba(15,42,92,.35)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{display:flex;align-items:center;text-decoration:none}
 .logo-img{height:50px;width:auto;object-fit:contain}
@@ -46,7 +46,7 @@ img{max-width:100%;display:block}
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;color:#fff;padding:130px 0 90px;background:var(--navy);overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:
   radial-gradient(60% 70% at 85% 20%,rgba(255,122,0,.28),transparent 70%),
-  linear-gradient(105deg,rgba(13,22,44,.95) 0%,rgba(13,22,44,.84) 48%,rgba(13,22,44,.5) 100%),
+  linear-gradient(105deg,rgba(10,32,84,.95) 0%,rgba(14,42,100,.85) 48%,rgba(20,60,130,.5) 100%),
   url("../assets/hotel%206.webp") center/cover no-repeat}
 .hero-grid{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
 .kicker{display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;padding:7px 16px;border-radius:999px;background:#ff7a0026;border:1px solid #ff7a0080;color:#ffd9ae;font-weight:700;font-size:.84rem;letter-spacing:.02em}
@@ -80,7 +80,7 @@ img{max-width:100%;display:block}
 .media{position:relative;height:235px;background:linear-gradient(135deg,var(--navy),var(--navy-2));overflow:hidden}
 .media img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
 .card:hover .media img{transform:scale(1.07)}
-.media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,22,44,.82),transparent 55%);pointer-events:none}
+.media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,32,84,.82),transparent 55%);pointer-events:none}
 .pill{position:absolute;top:14px;left:14px;z-index:1;background:#ffffffee;color:var(--navy);border-radius:999px;padding:5px 13px;font-size:.78rem;font-weight:700;backdrop-filter:blur(6px);box-shadow:0 4px 12px -4px rgba(0,0,0,.3)}
 .chip-pay{position:absolute;left:16px;bottom:13px;z-index:1;color:#ffffffe6;font-size:.78rem;letter-spacing:.02em}
 .chip-pay b{display:block;font-family:"Playfair Display",serif;font-size:1.5rem;color:var(--sun);line-height:1.1}
@@ -97,7 +97,7 @@ img{max-width:100%;display:block}
 .pager{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;flex:none;transition:background .15s,color .15s,transform .15s}
 .pager:hover{background:var(--orange);color:#fff;border-color:var(--orange);transform:translateY(-1px)}
 .pager:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
-.dots button{position:relative;width:10px;height:10px;border-radius:999px;border:0;background:#e6d2b8;cursor:pointer;padding:0;transition:width .25s,background .25s}
+.dots button{position:relative;width:10px;height:10px;border-radius:999px;border:0;background:#c9d9f2;cursor:pointer;padding:0;transition:width .25s,background .25s}
 .dots button::before{content:"";position:absolute;inset:-17px -5px}
 .dots button:hover{background:var(--sun)}
 .dots button[aria-current="true"]{background:var(--orange);width:28px}
@@ -116,88 +116,49 @@ img{max-width:100%;display:block}
 .noscript{text-align:center;color:var(--mute);margin-top:20px}
 
 /* Footer */
-.footer{background:var(--navy);color:#c5cde0;padding:32px 0;font-size:.92rem}
+.footer{background:var(--navy);color:#c9d6f0;padding:32px 0;font-size:.92rem}
 .foot{display:grid;gap:10px}
-.disclose{max-width:52em;font-size:.86rem;color:#9fb0da;margin:0}
+.disclose{max-width:52em;font-size:.86rem;color:#a9bde6;margin:0}
 
-/* ===== WhatsApp Floating ===== */
-.float-wa-container{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;gap:10px;pointer-events:none}
-.float-wa-container > *{pointer-events:auto}
-.float-wa-label{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;color:#172b20;border:1px solid rgba(37,211,102,.25);border-radius:12px;font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.12);opacity:0;visibility:hidden;transform:translateX(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease;pointer-events:none}
-.float-wa-label::after{content:"";position:absolute;right:-6px;width:10px;height:10px;background:#fff;border-top:1px solid rgba(37,211,102,.25);border-right:1px solid rgba(37,211,102,.25);transform:rotate(45deg)}
-.float-wa-label .icon{width:16px;height:16px;fill:#25D366;flex-shrink:0}
-.channelBtn.float{position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;width:60px;height:60px;padding:0;background:#25D366;color:#fff;border:2px solid rgba(255,255,255,.9);border-radius:50%;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.18);transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
-.channelBtn.float::before{content:"";display:block;width:32px;height:32px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20.52 3.48A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.43-8.43ZM12.06 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.45 4.44-9.89 9.89-9.89a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.88 9.89Z'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center}
-.float-wa-container:hover .float-wa-label,.float-wa-container:focus-within .float-wa-label{opacity:1;visibility:visible;transform:translateX(0)}
-.channelBtn.float:hover{background:#128C7E;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
-.channelBtn.float:focus-visible{outline:3px solid #128C7E;outline-offset:3px}
+/* ===== Floating action stack (bottom-left, clear of the support chat button) =====
+   WhatsApp sits above Install app. When Install is hidden (app installed)
+   the WhatsApp row drops into its place. Each row = round icon + small caption. */
+.fab-stack{position:fixed;left:10px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;align-items:flex-start;gap:10px;pointer-events:none}
+.install-slot{position:relative;display:flex}
+.install-slot:has(.install-btn[hidden]){display:none}
+
+.fab{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;padding:0;margin:0;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer;color:inherit;-webkit-tap-highlight-color:transparent;animation:fabIn .45s cubic-bezier(.2,.9,.3,1) both}
+.fab-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;color:#fff;border:2px solid #fff;box-shadow:0 8px 18px -6px rgba(15,42,92,.55),0 2px 4px rgba(15,42,92,.15);transition:transform .2s,box-shadow .2s,filter .2s}
+.fab-wa .fab-icon{background:linear-gradient(135deg,#2fe07a,#17b955)}
+.fab-install .fab-icon{background:linear-gradient(135deg,#2b5fd0,var(--navy-2))}
+.fab-label{padding:5px 11px;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:999px;font-size:.74rem;font-weight:700;line-height:1.2;white-space:nowrap;box-shadow:0 4px 12px -6px rgba(15,42,92,.45);transition:transform .2s,box-shadow .2s,max-width .35s ease,opacity .25s ease,padding .35s ease,border-width .35s ease;max-width:220px;overflow:hidden}
+.fab:hover .fab-icon{transform:translateY(-2px) scale(1.05);filter:brightness(1.06)}
+.fab:hover .fab-label{box-shadow:0 6px 14px -6px rgba(15,42,92,.55)}
+/* After a few seconds the captions fold away so only the circles remain; hover/focus brings them back */
+.fab-stack.compact .fab:not(:hover):not(:focus-visible) .fab-label{max-width:0;opacity:0;padding-left:0;padding-right:0;border-width:0;margin-left:-8px}
+.fab:active .fab-icon{transform:none}
+.fab:focus-visible{outline:none}
+.fab:focus-visible .fab-icon{outline:3px solid var(--orange);outline-offset:2px}
+@keyframes fabIn{from{opacity:0;transform:translateX(-10px) scale(.96)}to{opacity:1;transform:none}}
+
+.install-btn[hidden],.install-tip[hidden]{display:none}
+.install-tip{position:absolute;left:0;bottom:calc(100% + 10px);width:max-content;max-width:250px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:.86rem;line-height:1.45;color:var(--mute);box-shadow:0 10px 26px -10px rgba(15,42,92,.45);animation:rise .25s ease-out;pointer-events:auto}
+.install-tip b{display:block;color:var(--blue-d);margin-bottom:2px}
+
 @media(max-width:640px){
   .nav-link{display:none}
   .terms{grid-template-columns:1fr;gap:12px}
   .terms li{flex-direction:row;align-items:baseline;gap:10px;padding:0;border-left:0}
-  .faq details p{padding-right:0}.float-wa-container{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}.float-wa-label{display:none}.channelBtn.float{width:54px;height:54px;box-shadow:0 3px 10px rgba(0,0,0,.2)}.channelBtn.float::before{width:28px;height:28px}}
-@media(prefers-reduced-motion:reduce){.channelBtn.float,.float-wa-label{transition:none;animation:none}}
-
-/* Install app */
-.install-wrap{
-  position:fixed;
-  right:96px;              /* 16px (wa offset) + 60px (wa size) + 20px gap */
-  bottom:16px;             /* same level as WhatsApp */
-  z-index:50;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  pointer-events:none;
+  .faq details p{padding-right:0}
+  .fab-stack{left:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));gap:8px}
+  .fab-icon{width:42px;height:42px}
+  .fab-label{font-size:.7rem;padding:4px 9px}
+  .rot{gap:12px}
 }
-.install-wrap > *{pointer-events:auto}
-
-/* keep the existing button styling but let it float */
-.install-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  min-height:60px;         /* match WhatsApp height so it sits on the same line */
-  padding:0 22px;
-  border:0;
-  border-radius:999px;
-  background:var(--blue);
-  color:#fff;
-  font:inherit;
-  font-weight:700;
-  font-size:.95rem;
-  cursor:pointer;
-  box-shadow:0 6px 18px -6px rgba(11,31,87,.6);
-  transition:background .15s,transform .15s;
-}
-.install-btn:hover{background:var(--blue-d);transform:translateY(-2px)}
-.install-btn[hidden],.install-tip[hidden]{display:none}
-
-/* tip now opens above/left of the button */
-.install-tip{
-  position:absolute;
-  right:0;
-  bottom:calc(100% + 10px);
-  max-width:260px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:12px 14px;
-  font-size:.88rem;
-  line-height:1.45;
-  color:var(--mute);
-  box-shadow:0 10px 26px -10px rgba(11,31,87,.45);
-  animation:rise .25s ease-out;
-}
-.install-tip b{display:block;color:var(--blue-d);margin-bottom:2px}
-
-/* Mobile: stack tighter / hide label so it doesn't crowd WhatsApp */
-@media(max-width:640px){
-  .install-wrap{right:78px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
-  .install-btn{min-height:54px;padding:0 16px;font-size:.85rem}
-}
+@media(prefers-reduced-motion:reduce){.fab,.fab-icon,.fab-label{transition:none;animation:none}}
 
 /* Modal */
-.modal-back{position:fixed;inset:0;background:#0d162ccc;backdrop-filter:blur(5px);z-index:60;display:grid;place-items:center;padding:16px;overflow:auto;animation:fade .2s}
+.modal-back{position:fixed;inset:0;background:#0a1f4ecc;backdrop-filter:blur(5px);z-index:60;display:grid;place-items:center;padding:16px;overflow:auto;animation:fade .2s}
 .modal-back[hidden]{display:none}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .modal{position:relative;width:min(560px,100%);background:var(--card);border-radius:26px;padding:34px 32px 30px;border-top:6px solid var(--orange);box-shadow:0 40px 80px -30px #000;animation:rise .3s cubic-bezier(.2,.9,.3,1)}
@@ -242,23 +203,3 @@ img{max-width:100%;display:block}
   .foot{justify-content:center;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
-
-/* Floating stack: Install app + WhatsApp on the same line, bottom-right */
-.fab-stack{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:10px}
-.fab-stack .float-wa-container{position:static;right:auto;bottom:auto}
-.fab-stack .install-btn{min-height:60px;white-space:nowrap}
-.fab-stack .install-tip{position:absolute;right:0;bottom:calc(100% + 10px)}
-@media(max-width:640px){
-  .fab-stack{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
-  .fab-stack .install-btn{min-height:54px}
-}
-
-/* Install app: bottom-left, level with the WhatsApp button */
-.fab-stack{left:auto}
-.fab-stack .install-btn{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50}
-.fab-stack .install-tip{position:fixed;left:16px;right:auto;bottom:calc(16px + 60px + 10px + env(safe-area-inset-bottom,0px))}
-@media(max-width:640px){
-  .fab-stack .install-btn{left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
-  .fab-stack .install-tip{left:14px;bottom:calc(14px + 54px + 10px + env(safe-area-inset-bottom,0px))}
-  .rot{gap:12px}
-}

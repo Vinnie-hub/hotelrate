@@ -168,6 +168,10 @@
     if (!installTip.hidden && !e.target.closest("#installBtn, #installTip")) installTip.hidden = true;
   });
 
+  /* ---------- Floating buttons: fold captions away after a few seconds ---------- */
+  const fabStack = $("fabStack");
+  if (fabStack) setTimeout(() => fabStack.classList.add("compact"), 6000);
+
   /* ---------- Header shadow on scroll + footer year ---------- */
   const hd = document.querySelector(".header");
   const sc = () => hd.classList.toggle("solid", window.scrollY > 10);

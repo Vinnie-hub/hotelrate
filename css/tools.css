@@ -6,7 +6,7 @@
 .tools-card .lead{color:var(--mute);margin:0 0 24px}
 .field-label{display:block;font-weight:700;color:var(--navy);margin-bottom:8px;font-size:.95rem}
 .field{width:100%;padding:15px 18px;border-radius:16px;border:2px solid var(--line);background:#fff;color:var(--text);font:inherit;font-size:1rem;transition:border-color .2s,box-shadow .2s}
-.field::placeholder{color:#9aa3b5}
+.field::placeholder{color:#8a9bbd}
 .field:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,122,0,.18)}
 .field-hint{min-height:1.5em;margin:8px 0 0;font-size:.85rem;color:var(--mute)}
 .field-hint.warn{color:var(--orange-d);font-weight:600}
